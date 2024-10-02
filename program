@@ -205,118 +205,100 @@ End Class
 
 desgin:
 
-Design: 
-<%@ Page Language="vb" AutoEventWireup="false" CodeBehind="Default.aspx.vb" 
-Inherits="WebApplication1.Form1" %> 
-<!DOCTYPE html> 
-<html xmlns="http://www.w3.org/1999/xhtml"> 
-<head runat="server"> 
-    <title>Sign Up</title> 
-    <style> 
-        .form-container { 
-            width: 400px; 
-            margin: 0 auto; 
-            padding: 20px; 
-            border: 1px solid #ccc; 
-            border-radius: 10px; 
-        } 
-        .error { 
-            color: red; 
-        } 
-    </style> 
-</head> 
-<body> 
-    <form id="form1" runat="server"> 
-        <div class="form-container"> 
-            <h2>Sign-Up Form</h2> 
-            
-            <!-- Username --> 
-            <asp:Label ID="lblUsername" runat="server" 
-Text="Username:"></asp:Label> 
-            <asp:TextBox ID="txtUsername" runat="server"></asp:TextBox> 
-            <asp:RequiredFieldValidator ID="rfvUsername" runat="server" 
-                ControlToValidate="txtUsername" 
-                ErrorMessage="Username is required." 
-                ForeColor="Red"></asp:RequiredFieldValidator> 
-            <br /><br /> 
-            
-            <!-- Email --> 
-            <asp:Label ID="lblEmail" runat="server" Text="Email 
-Address:"></asp:Label> 
-            <asp:TextBox ID="txtEmail" runat="server"></asp:TextBox> 
-            <asp:RequiredFieldValidator ID="rfvEmail" runat="server" 
-                ControlToValidate="txtEmail" 
-                ErrorMessage="Email is required." 
-                ForeColor="Red"></asp:RequiredFieldValidator> 
-            <asp:RegularExpressionValidator ID="revEmail" runat="server" 
-                ControlToValidate="txtEmail" 
-                ErrorMessage="Invalid email format." 
-                ValidationExpression="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA
-Z]{2,}$" 
-                ForeColor="Red"></asp:RegularExpressionValidator> 
-            <br /><br /> 
-            
-            <!-- Password --> 
-            <asp:Label ID="lblPassword" runat="server" 
-Text="Password:"></asp:Label> 
-            <asp:TextBox ID="txtPassword" runat="server" 
-TextMode="Password"></asp:TextBox> 
-            <asp:RequiredFieldValidator ID="rfvPassword" runat="server" 
-                ControlToValidate="txtPassword" 
-                ErrorMessage="Password is required." 
-                ForeColor="Red"></asp:RequiredFieldValidator> 
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+ <title>Sign Up</title>
+ <style>
+ .form-container {
+ width: 400px;
+ margin: 0 auto;
+ padding: 20px;
+ border: 1px solid #ccc;
+ border-radius: 10px;
+ }
+ .error {
+ color: red;
+ }
+ </style>
+</head>
+<body>
+ <form id="form1" runat="server">
+ <div class="form-container">
+ <h2>Sign-Up Form</h2>
  
+ <!-- Username -->
+ <asp:Label ID="lblUsername" runat="server" 
+Text="Username:"></asp:Label>
+ <asp:TextBox ID="txtUsername" runat="server"></asp:TextBox>
+ <asp:RequiredFieldValidator ID="rfvUsername" runat="server"
+ ControlToValidate="txtUsername"
+ ErrorMessage="Username is required."
+ ForeColor="Red"></asp:RequiredFieldValidator>
+ <br /><br />
  
-<asp:RangeValidator  
-    ID="rvPasswordLength"  
-    runat="server"  
-    ControlToValidate="txtPassword"  
-    ErrorMessage="Password length must be between 6 and 20 characters."  
-    MinimumValue="6"  
-    MaximumValue="20"  
-    Type="Integer"  
-    ForeColor="Red"> 
-</asp:RangeValidator> 
-            <br /><br /> 
-            
-            <!-- Confirm Password --> 
-            <asp:Label ID="lblConfirmPassword" runat="server" Text="Confirm 
-Password:"></asp:Label> 
-            <asp:TextBox ID="txtConfirmPassword" runat="server" 
-TextMode="Password"></asp:TextBox> 
-            <asp:RequiredFieldValidator ID="rfvConfirmPassword" runat="server" 
-                ControlToValidate="txtConfirmPassword" 
-                ErrorMessage="Confirmation password is required." 
-                ForeColor="Red"></asp:RequiredFieldValidator> 
-            <asp:CompareValidator ID="cvPasswordMatch" runat="server" 
-                ControlToValidate="txtConfirmPassword" 
-                ControlToCompare="txtPassword" 
-                ErrorMessage="Passwords do not match." 
-                ForeColor="Red"></asp:CompareValidator> 
-            <br /><br /> 
+ <!-- Email -->
+ <asp:Label ID="lblEmail" runat="server" Text="Email 
+Address:"></asp:Label>
+ <asp:TextBox ID="txtEmail" runat="server"></asp:TextBox>
+ <asp:RequiredFieldValidator ID="rfvEmail" runat="server"
+ ControlToValidate="txtEmail"
+ ErrorMessage="Email is required."
+ ForeColor="Red"></asp:RequiredFieldValidator>
+ <asp:RegularExpressionValidator ID="revEmail" runat="server"
+ ControlToValidate="txtEmail"
+ ErrorMessage="Invalid email format."
+ ValidationExpression="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zAZ]{2,}$"
+ ForeColor="Red"></asp:RegularExpressionValidator>
+ <br /><br />
  
-            <!-- Custom Validation (e.g., no special characters in username) --> 
-            <asp:CustomValidator ID="cvCustomUsername" runat="server" 
-                ControlToValidate="txtUsername" 
-                OnServerValidate="ValidateUsername" 
-                ErrorMessage="Username cannot contain special characters." 
-                ForeColor="Red"></asp:CustomValidator> 
-            <br /><br /> 
-            
-            <!-- Validation Summary --> 
-            <asp:ValidationSummary ID="vsSummary" runat="server" 
-                ForeColor="Red" 
-                HeaderText="Please correct the following errors:" 
-                ShowMessageBox="false" 
-                ShowSummary="true"></asp:ValidationSummary> 
-            <br /><br /> 
-            
-            <!-- Submit Button --> 
-            <asp:Button ID="btnSubmit" runat="server" Text="Sign Up" 
-OnClick="btnSubmit_Click" /> 
-        </div> 
-    </form> 
-</body> 
+ <!-- Password -->
+ <asp:Label ID="lblPassword" runat="server" 
+Text="Password:"></asp:Label>
+ <asp:TextBox ID="txtPassword" runat="server" 
+TextMode="Password"></asp:TextBox>
+ <asp:RequiredFieldValidator ID="rfvPassword" runat="server"
+ ControlToValidate="txtPassword"
+ ErrorMessage="Password is required."
+ ForeColor="Red"></asp:RequiredFieldValidator>
+ 
+ <!-- Confirm Password -->
+ <asp:Label ID="lblConfirmPassword" runat="server" Text="Confirm 
+Password:"></asp:Label>
+ <asp:TextBox ID="txtConfirmPassword" runat="server" 
+TextMode="Password"></asp:TextBox>
+ <asp:RequiredFieldValidator ID="rfvConfirmPassword" runat="server"
+ ControlToValidate="txtConfirmPassword"
+ ErrorMessage="Confirmation password is required."
+ ForeColor="Red"></asp:RequiredFieldValidator>
+ <asp:CompareValidator ID="cvPasswordMatch" runat="server"
+ ControlToValidate="txtConfirmPassword"
+ ControlToCompare="txtPassword"
+ ErrorMessage="Passwords do not match."
+ ForeColor="Red"></asp:CompareValidator>
+ <br /><br />
+ <!-- Custom Validation (e.g., no special characters in username) -->
+ <asp:CustomValidator ID="cvCustomUsername" runat="server"
+ ControlToValidate="txtUsername"
+ OnServerValidate="ValidateUsername"
+ ErrorMessage="Username cannot contain special characters."
+ ForeColor="Red"></asp:CustomValidator>
+ <br /><br />
+ 
+ <!-- Validation Summary -->
+ <asp:ValidationSummary ID="vsSummary" runat="server"
+ ForeColor="Red"
+ HeaderText="Please correct the following errors:"
+ ShowMessageBox="false"
+ ShowSummary="true"></asp:ValidationSummary>
+ <br /><br />
+ 
+ <!-- Submit Button -->
+ <asp:Button ID="btnSubmit" runat="server" Text="Sign Up" 
+OnClick="btnSubmit_Click" />
+ </div>
+ </form>
+</body>
 </html>
 
 
